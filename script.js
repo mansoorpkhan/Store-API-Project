@@ -1,13 +1,13 @@
 const API = "https://fakestoreapi.com/products";
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-/* ---------- Cart Count ---------- */
+
 function updateCartCount() {
   const count = document.getElementById("cart-count");
   if (count) count.innerText = cart.reduce((a,c)=>a+c.qty,0);
 }
 
-/* ---------- Load Products ---------- */
+
 async function loadProducts() {
   const res = await fetch(API);
   const products = await res.json();
@@ -29,7 +29,7 @@ async function loadProducts() {
   });
 }
 
-/* ---------- Add to Cart ---------- */
+
 function addToCart(id, title, price, image) {
   const item = cart.find(p => p.id === id);
   if (item) {
@@ -42,7 +42,7 @@ function addToCart(id, title, price, image) {
   alert("Product added to cart");
 }
 
-/* ---------- Load Cart ---------- */
+
 function loadCart() {
   const items = document.getElementById("cart-items");
   const total = document.getElementById("total-price");
@@ -72,7 +72,7 @@ function loadCart() {
   count.innerText = qty;
 }
 
-/* ---------- Quantity Change ---------- */
+
 function changeQty(id, val) {
   cart = cart.map(p => {
     if (p.id === id) p.qty += val;
